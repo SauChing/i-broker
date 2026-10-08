@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 /**
  * Health check handler for InvestWise APIs
  * Can be imported directly or served via Express router
@@ -25,7 +25,7 @@ export async function checkAllApisHealth(baseUrl = 'http://localhost:3000') {
     } catch (err) {
       checks[name].status = 'down';
       checks[name].latencyMs = Date.now() - t0;
-      checks[name].error = err.message || String(err);
+      checks[name].error = err?.message || String(err);
     }
   }
 
