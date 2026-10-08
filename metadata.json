@@ -1,0 +1,6 @@
+{
+  "name": "InvestWise",
+  "description": "Personalised investment discovery using live market data to match stocks and ETFs to your risk appetite.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
