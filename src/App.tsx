@@ -73,6 +73,8 @@ export default function App() {
   // Filters & sorting
   const [filterType, setFilterType] = useState<'all' | 'stock' | 'etf'>('all');
   const [sortBy, setSortBy] = useState<'score' | 'risk' | 'growth'>('score');
+  const [visibleCount, setVisibleCount] = useState<number>(18);
+  const [discoverSector, setDiscoverSector] = useState<string>('all');
 
   // Derive current risk profile from answers
   const riskResult: RiskProfileResult = useMemo(() => {
@@ -327,7 +329,7 @@ export default function App() {
             ) : (
               <div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {displayedOpportunities.slice(0, 9).map((analysis, index) => (
+                  {displayedOpportunities.slice(0, visibleCount).map((analysis, index) => (
                     <StockCard
                       key={analysis.quote.symbol}
                       analysis={analysis}
@@ -340,6 +342,19 @@ export default function App() {
                     />
                   ))}
                 </div>
+
+                {/* Show All live opportunities button */}
+                {displayedOpportunities.length > visibleCount && (
+                  <div className="mt-8 flex justify-center">
+                    <button
+                      onClick={() => setVisibleCount(displayedOpportunities.length)}
+                      className="px-6 py-3 rounded-2xl bg-neutral-900 text-white font-semibold text-xs hover:bg-neutral-800 transition-all cursor-pointer shadow-xs flex items-center gap-2"
+                    >
+                      <span>Show all {displayedOpportunities.length} live stocks & ETFs</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
 
                 {displayedOpportunities.length === 0 && (
                   <div className="p-12 text-center bg-white rounded-2xl border border-neutral-200 text-xs text-neutral-500">
@@ -371,7 +386,7 @@ export default function App() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-950">
-                  Discover Market Universe
+                  Discover Market Universe ({displayedOpportunities.length} Assets)
                 </h1>
                 <p className="text-xs text-neutral-500 mt-1">
                   Explore liquid US stocks, ETFs and index leaders evaluated for your {riskResult.category} risk appetite.
@@ -387,20 +402,57 @@ export default function App() {
               </button>
             </div>
 
+            {/* Sector / Theme Category Pills on Discover */}
+            <div className="flex flex-wrap items-center gap-1.5 pb-2 border-b border-neutral-200/60">
+              {[
+                { id: 'all', label: `All (${displayedOpportunities.length})` },
+                { id: 'etf', label: 'ETFs & Indexes' },
+                { id: 'tech', label: 'Technology & AI' },
+                { id: 'finance', label: 'Financial & Payments' },
+                { id: 'healthcare', label: 'Healthcare & Biotech' },
+                { id: 'consumer', label: 'Consumer & Retail' },
+                { id: 'energy', label: 'Energy & Industrials' },
+              ].map(cat => (
+                <button
+                  key={cat.id}
+                  onClick={() => setDiscoverSector(cat.id)}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
+                    discoverSector === cat.id
+                      ? 'bg-neutral-900 text-white'
+                      : 'bg-white border border-neutral-200 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+
             {/* Opportunities List */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {displayedOpportunities.map((analysis, index) => (
-                <StockCard
-                  key={analysis.quote.symbol}
-                  analysis={analysis}
-                  rank={index + 1}
-                  isWatchlisted={watchlist.includes(analysis.quote.symbol)}
-                  onToggleWatchlist={handleToggleWatchlist}
-                  isCompared={comparedSymbols.includes(analysis.quote.symbol)}
-                  onToggleCompare={handleToggleCompare}
-                  onSelect={(sym) => setSelectedStockDetail(sym)}
-                />
-              ))}
+              {displayedOpportunities
+                .filter(a => {
+                  if (discoverSector === 'all') return true;
+                  if (discoverSector === 'etf') return a.quote.type === 'etf';
+                  const s = (a.quote.sector || '').toLowerCase() + (a.quote.industry || '').toLowerCase() + a.quote.symbol.toLowerCase();
+                  if (discoverSector === 'tech') return s.includes('tech') || s.includes('software') || s.includes('semiconductor') || ['aapl','msft','nvda','googl','meta','pltr','arm','adbe','amd','orcl','avgo'].includes(a.quote.symbol.toLowerCase());
+                  if (discoverSector === 'finance') return s.includes('bank') || s.includes('financial') || ['jpm','bac','wfc','gs','ms','v','ma','axp','blk','coin'].includes(a.quote.symbol.toLowerCase());
+                  if (discoverSector === 'healthcare') return s.includes('health') || s.includes('pharma') || ['lly','jnj','unh','abbv','mrk','pfe','tmo'].includes(a.quote.symbol.toLowerCase());
+                  if (discoverSector === 'consumer') return s.includes('consumer') || s.includes('retail') || ['wmt','cost','pg','ko','pep','hd','mcd','nke','dis','nflx','tsla','amzn','uber'].includes(a.quote.symbol.toLowerCase());
+                  if (discoverSector === 'energy') return s.includes('energy') || s.includes('industrial') || ['xom','cvx','cat','ba','ge','lmt'].includes(a.quote.symbol.toLowerCase());
+                  return true;
+                })
+                .map((analysis, index) => (
+                  <StockCard
+                    key={analysis.quote.symbol}
+                    analysis={analysis}
+                    rank={index + 1}
+                    isWatchlisted={watchlist.includes(analysis.quote.symbol)}
+                    onToggleWatchlist={handleToggleWatchlist}
+                    isCompared={comparedSymbols.includes(analysis.quote.symbol)}
+                    onToggleCompare={handleToggleCompare}
+                    onSelect={(sym) => setSelectedStockDetail(sym)}
+                  />
+                ))}
             </div>
           </div>
         )}

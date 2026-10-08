@@ -18,17 +18,14 @@ apiRouter.get('/health', healthHandler);
 
 // Default monitored discovery universe
 const DEFAULT_SYMBOLS = [
-  'MSFT',
-  'NVDA',
-  'AAPL',
-  'GOOGL',
-  'AMZN',
-  'VOO',
-  'QQQ',
-  'META',
-  'TSLA',
-  'SPY',
-  'VTI',
+  'AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'META', 'TSLA',
+  'AVGO', 'ORCL', 'AMD', 'CRM', 'ADBE', 'QCOM', 'INTC', 'IBM',
+  'PLTR', 'ARM', 'UBER', 'COIN', 'NFLX',
+  'JPM', 'BAC', 'WFC', 'MS', 'GS', 'V', 'MA', 'AXP', 'BLK',
+  'LLY', 'JNJ', 'UNH', 'ABBV', 'MRK', 'PFE', 'TMO',
+  'WMT', 'COST', 'PG', 'KO', 'PEP', 'HD', 'MCD', 'NKE', 'DIS',
+  'CAT', 'BA', 'GE', 'LMT', 'XOM', 'CVX',
+  'VOO', 'QQQ', 'SPY', 'VTI', 'DIA', 'IWM', 'SMH', 'SCHD', 'XLK', 'XLF', 'XLE', 'XLV',
 ];
 
 /**

@@ -478,19 +478,30 @@ export const BENCHMARK_ASSETS: {
   },
   ];
 
-  // Merge live assets pulled by Python script if available
+  // Merge all live assets pulled by Python script
   const liveAssets = (rawData as any)?.assets;
   if (liveAssets && typeof liveAssets === 'object') {
-    return defaults.map((item) => {
-      const live = liveAssets[item.quote.symbol];
-      if (live && live.quote) {
-        return {
-          quote: { ...item.quote, ...live.quote },
-          fundamentals: { ...item.fundamentals, ...(live.fundamentals || {}) },
-        };
+    const allList: { quote: MarketQuote; fundamentals: MarketFundamentals }[] = [];
+    const seen = new Set<string>();
+
+    for (const [sym, entry] of Object.entries(liveAssets)) {
+      const data = entry as any;
+      if (data?.quote?.price) {
+        allList.push({
+          quote: data.quote,
+          fundamentals: data.fundamentals || {},
+        });
+        seen.add(sym.toUpperCase());
       }
-      return item;
-    });
+    }
+
+    for (const def of defaults) {
+      if (!seen.has(def.quote.symbol.toUpperCase())) {
+        allList.push(def);
+      }
+    }
+
+    return allList;
   }
 
   return defaults;
