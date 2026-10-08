@@ -25,6 +25,7 @@ import { SearchBar } from './components/SearchBar';
 import { FinancialDisclaimer } from './components/FinancialDisclaimer';
 import { api, type AnalysisResponse } from './services/api';
 import { calculateRiskProfile, DEFAULT_ANSWERS } from './utils/riskProfiler';
+import { generateLocalMarketAnalysis } from './utils/marketEngine';
 import type {
   RiskAnswers,
   RiskProfileResult,
@@ -73,16 +74,18 @@ export default function App() {
   const [filterType, setFilterType] = useState<'all' | 'stock' | 'etf'>('all');
   const [sortBy, setSortBy] = useState<'score' | 'risk' | 'growth'>('score');
 
-  // Market analysis data
-  const [analysisData, setAnalysisData] = useState<AnalysisResponse | null>(null);
-  const [isLoadingAnalysis, setIsLoadingAnalysis] = useState(true);
-  const [isRefreshing, setIsRefreshing] = useState(false);
-  const [fetchError, setFetchError] = useState<string | null>(null);
-
   // Derive current risk profile from answers
   const riskResult: RiskProfileResult = useMemo(() => {
     return calculateRiskProfile(answers);
   }, [answers]);
+
+  // Market analysis data (pre-populated so all opportunities display immediately!)
+  const [analysisData, setAnalysisData] = useState<AnalysisResponse>(() => {
+    return generateLocalMarketAnalysis(calculateRiskProfile(DEFAULT_ANSWERS).category);
+  });
+  const [isLoadingAnalysis, setIsLoadingAnalysis] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [fetchError, setFetchError] = useState<string | null>(null);
 
   // Save to localStorage
   useEffect(() => {

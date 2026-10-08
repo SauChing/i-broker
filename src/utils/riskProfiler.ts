@@ -1,5 +1,5 @@
 import type { RiskAnswers, RiskCategory, RiskProfileResult } from '../types/market';
-import { RISK_WEIGHTS } from '../../server/scoringEngine';
+import { RISK_WEIGHTS } from './scoringEngine';
 
 export interface QuestionOption {
   value: string;

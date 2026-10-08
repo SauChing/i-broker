@@ -5,7 +5,7 @@ import type {
   RiskCategory,
   SentimentType,
 } from '../types/market';
-import { analyzeAsset } from '../../server/scoringEngine';
+import { analyzeAsset } from './scoringEngine';
 import rawData from '../data/market_data.json';
 
 // Liquid universe benchmark dataset

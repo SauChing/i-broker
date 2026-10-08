@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T15:31:48.281116Z",
+  "generatedAt": "2026-10-08T15:32:58.668256Z",
   "source": "query1.finance.yahoo.com",
   "totalAssets": 11,
   "assets": {
@@ -7,9 +7,9 @@
       "quote": {
         "symbol": "AAPL",
         "name": "Apple Inc.",
-        "price": 337.66,
-        "change": 79.6,
-        "changePercent": 30.85,
+        "price": 337.73,
+        "change": 79.67,
+        "changePercent": 30.87,
         "fiftyTwoWeekHigh": 345.34,
         "fiftyTwoWeekLow": 243.42,
         "dayHigh": 338.34,
@@ -19,13 +19,13 @@
         "eps": null,
         "dividendYield": null,
         "beta": 1.1,
-        "volume": 6902701,
+        "volume": 6940263,
         "avgVolume": null,
         "sector": "US Equity",
         "industry": "General",
         "currency": "USD",
         "type": "stock",
-        "lastUpdated": "2026-10-08T15:31:44.254949Z"
+        "lastUpdated": "2026-10-08T15:32:54.502804Z"
       },
       "fundamentals": {
         "symbol": "AAPL",
@@ -42,7 +42,7 @@
         "beta": 1.1,
         "fiftyTwoWeekChange": null,
         "summary": null,
-        "lastUpdated": "2026-10-08T15:31:44.254964Z"
+        "lastUpdated": "2026-10-08T15:32:54.502822Z"
       },
       "history": [
         {
@@ -1303,7 +1303,7 @@
         {
           "timestamp": 1791466200000,
           "date": "2026-10-08",
-          "price": 337.66
+          "price": 337.73
         }
       ]
     },
@@ -1323,13 +1323,13 @@
         "eps": null,
         "dividendYield": null,
         "beta": 1.1,
-        "volume": 5306142,
+        "volume": 5328176,
         "avgVolume": null,
         "sector": "US Equity",
         "industry": "General",
         "currency": "USD",
         "type": "stock",
-        "lastUpdated": "2026-10-08T15:31:44.635418Z"
+        "lastUpdated": "2026-10-08T15:32:54.887857Z"
       },
       "fundamentals": {
         "symbol": "MSFT",
@@ -1346,7 +1346,7 @@
         "beta": 1.1,
         "fiftyTwoWeekChange": null,
         "summary": null,
-        "lastUpdated": "2026-10-08T15:31:44.635428Z"
+        "lastUpdated": "2026-10-08T15:32:54.887865Z"
       },
       "history": [
         {
@@ -2607,7 +2607,7 @@
         {
           "timestamp": 1791466200000,
           "date": "2026-10-08",
-          "price": 530.15
+          "price": 530.16
         }
       ]
     },
@@ -2615,9 +2615,9 @@
       "quote": {
         "symbol": "NVDA",
         "name": "NVIDIA Corporation",
-        "price": 236.18,
-        "change": 47.07,
-        "changePercent": 24.89,
+        "price": 236.11,
+        "change": 47.0,
+        "changePercent": 24.85,
         "fiftyTwoWeekHigh": 243.37,
         "fiftyTwoWeekLow": 164.27,
         "dayHigh": 237.07,
@@ -2627,13 +2627,13 @@
         "eps": null,
         "dividendYield": null,
         "beta": 1.1,
-        "volume": 32461774,
+        "volume": 32565431,
         "avgVolume": null,
         "sector": "US Equity",
         "industry": "General",
         "currency": "USD",
         "type": "stock",
-        "lastUpdated": "2026-10-08T15:31:45.003872Z"
+        "lastUpdated": "2026-10-08T15:32:55.268653Z"
       },
       "fundamentals": {
         "symbol": "NVDA",
@@ -2650,7 +2650,7 @@
         "beta": 1.1,
         "fiftyTwoWeekChange": null,
         "summary": null,
-        "lastUpdated": "2026-10-08T15:31:45.003881Z"
+        "lastUpdated": "2026-10-08T15:32:55.268664Z"
       },
       "history": [
         {
@@ -3911,7 +3911,7 @@
         {
           "timestamp": 1791466200000,
           "date": "2026-10-08",
-          "price": 236.18
+          "price": 236.11
         }
       ]
     },
@@ -3919,9 +3919,9 @@
       "quote": {
         "symbol": "AMZN",
         "name": "Amazon.com, Inc.",
-        "price": 258.51,
-        "change": 33.29,
-        "changePercent": 14.78,
+        "price": 258.43,
+        "change": 33.21,
+        "changePercent": 14.75,
         "fiftyTwoWeekHigh": 287.2,
         "fiftyTwoWeekLow": 196.0,
         "dayHigh": 259.86,
@@ -3931,13 +3931,13 @@
         "eps": null,
         "dividendYield": null,
         "beta": 1.1,
-        "volume": 8676864,
+        "volume": 8758904,
         "avgVolume": null,
         "sector": "US Equity",
         "industry": "General",
         "currency": "USD",
         "type": "stock",
-        "lastUpdated": "2026-10-08T15:31:45.363456Z"
+        "lastUpdated": "2026-10-08T15:32:55.628036Z"
       },
       "fundamentals": {
         "symbol": "AMZN",
@@ -3954,7 +3954,7 @@
         "beta": 1.1,
         "fiftyTwoWeekChange": null,
         "summary": null,
-        "lastUpdated": "2026-10-08T15:31:45.363467Z"
+        "lastUpdated": "2026-10-08T15:32:55.628044Z"
       },
       "history": [
         {
@@ -5215,7 +5215,7 @@
         {
           "timestamp": 1791466200000,
           "date": "2026-10-08",
-          "price": 258.51
+          "price": 258.43
         }
       ]
     },
@@ -5223,9 +5223,9 @@
       "quote": {
         "symbol": "GOOGL",
         "name": "Alphabet Inc.",
-        "price": 350.26,
-        "change": 105.64,
-        "changePercent": 43.19,
+        "price": 350.32,
+        "change": 105.7,
+        "changePercent": 43.21,
         "fiftyTwoWeekHigh": 408.61,
         "fiftyTwoWeekLow": 235.84,
         "dayHigh": 356.83,
@@ -5235,13 +5235,13 @@
         "eps": null,
         "dividendYield": null,
         "beta": 1.1,
-        "volume": 8914610,
+        "volume": 8944845,
         "avgVolume": null,
         "sector": "US Equity",
         "industry": "General",
         "currency": "USD",
         "type": "stock",
-        "lastUpdated": "2026-10-08T15:31:45.723022Z"
+        "lastUpdated": "2026-10-08T15:32:56.022684Z"
       },
       "fundamentals": {
         "symbol": "GOOGL",
@@ -5258,7 +5258,7 @@
         "beta": 1.1,
         "fiftyTwoWeekChange": null,
         "summary": null,
-        "lastUpdated": "2026-10-08T15:31:45.723030Z"
+        "lastUpdated": "2026-10-08T15:32:56.022692Z"
       },
       "history": [
         {
@@ -6519,7 +6519,7 @@
         {
           "timestamp": 1791466200000,
           "date": "2026-10-08",
-          "price": 350.27
+          "price": 350.32
         }
       ]
     },
@@ -6527,9 +6527,9 @@
       "quote": {
         "symbol": "META",
         "name": "Meta Platforms, Inc.",
-        "price": 721.25,
-        "change": 3.41,
-        "changePercent": 0.48,
+        "price": 721.62,
+        "change": 3.78,
+        "changePercent": 0.53,
         "fiftyTwoWeekHigh": 779.82,
         "fiftyTwoWeekLow": 520.26,
         "dayHigh": 724.76,
@@ -6539,13 +6539,13 @@
         "eps": null,
         "dividendYield": null,
         "beta": 1.1,
-        "volume": 5606690,
+        "volume": 5629546,
         "avgVolume": null,
         "sector": "US Equity",
         "industry": "General",
         "currency": "USD",
         "type": "stock",
-        "lastUpdated": "2026-10-08T15:31:46.092239Z"
+        "lastUpdated": "2026-10-08T15:32:56.396701Z"
       },
       "fundamentals": {
         "symbol": "META",
@@ -6562,7 +6562,7 @@
         "beta": 1.1,
         "fiftyTwoWeekChange": null,
         "summary": null,
-        "lastUpdated": "2026-10-08T15:31:46.092247Z"
+        "lastUpdated": "2026-10-08T15:32:56.396710Z"
       },
       "history": [
         {
@@ -7823,7 +7823,7 @@
         {
           "timestamp": 1791466200000,
           "date": "2026-10-08",
-          "price": 721.25
+          "price": 721.62
         }
       ]
     },
@@ -7831,9 +7831,9 @@
       "quote": {
         "symbol": "TSLA",
         "name": "Tesla, Inc.",
-        "price": 372.33,
-        "change": -66.36,
-        "changePercent": -15.13,
+        "price": 372.34,
+        "change": -66.35,
+        "changePercent": -15.12,
         "fiftyTwoWeekHigh": 498.83,
         "fiftyTwoWeekLow": 297.38,
         "dayHigh": 375.96,
@@ -7843,13 +7843,13 @@
         "eps": null,
         "dividendYield": null,
         "beta": 1.1,
-        "volume": 10099448,
+        "volume": 10133214,
         "avgVolume": null,
         "sector": "US Equity",
         "industry": "General",
         "currency": "USD",
         "type": "stock",
-        "lastUpdated": "2026-10-08T15:31:46.451317Z"
+        "lastUpdated": "2026-10-08T15:32:56.754970Z"
       },
       "fundamentals": {
         "symbol": "TSLA",
@@ -7866,7 +7866,7 @@
         "beta": 1.1,
         "fiftyTwoWeekChange": null,
         "summary": null,
-        "lastUpdated": "2026-10-08T15:31:46.451326Z"
+        "lastUpdated": "2026-10-08T15:32:56.754979Z"
       },
       "history": [
         {
@@ -9127,7 +9127,7 @@
         {
           "timestamp": 1791466200000,
           "date": "2026-10-08",
-          "price": 372.33
+          "price": 372.34
         }
       ]
     },
@@ -9135,9 +9135,9 @@
       "quote": {
         "symbol": "VOO",
         "name": "Vanguard S&P 500 ETF",
-        "price": 712.09,
-        "change": 93.32,
-        "changePercent": 15.08,
+        "price": 712.02,
+        "change": 93.25,
+        "changePercent": 15.07,
         "fiftyTwoWeekHigh": 718.47,
         "fiftyTwoWeekLow": 578.46,
         "dayHigh": 713.81,
@@ -9147,13 +9147,13 @@
         "eps": null,
         "dividendYield": null,
         "beta": 1.0,
-        "volume": 1306290,
+        "volume": 1316432,
         "avgVolume": null,
         "sector": "Diversified ETF",
         "industry": "Index Fund",
         "currency": "USD",
         "type": "etf",
-        "lastUpdated": "2026-10-08T15:31:46.825285Z"
+        "lastUpdated": "2026-10-08T15:32:57.166554Z"
       },
       "fundamentals": {
         "symbol": "VOO",
@@ -9170,7 +9170,7 @@
         "beta": 1.0,
         "fiftyTwoWeekChange": null,
         "summary": null,
-        "lastUpdated": "2026-10-08T15:31:46.825295Z"
+        "lastUpdated": "2026-10-08T15:32:57.166564Z"
       },
       "history": [
         {
@@ -10431,7 +10431,7 @@
         {
           "timestamp": 1791466200000,
           "date": "2026-10-08",
-          "price": 712.09
+          "price": 712.02
         }
       ]
     },
@@ -10439,8 +10439,8 @@
       "quote": {
         "symbol": "QQQ",
         "name": "Invesco QQQ Trust",
-        "price": 753.91,
-        "change": 142.47,
+        "price": 753.93,
+        "change": 142.49,
         "changePercent": 23.3,
         "fiftyTwoWeekHigh": 762.86,
         "fiftyTwoWeekLow": 555.6,
@@ -10451,13 +10451,13 @@
         "eps": null,
         "dividendYield": null,
         "beta": 1.0,
-        "volume": 10304260,
+        "volume": 10326843,
         "avgVolume": null,
         "sector": "Diversified ETF",
         "industry": "Index Fund",
         "currency": "USD",
         "type": "etf",
-        "lastUpdated": "2026-10-08T15:31:47.212728Z"
+        "lastUpdated": "2026-10-08T15:32:57.589077Z"
       },
       "fundamentals": {
         "symbol": "QQQ",
@@ -10474,7 +10474,7 @@
         "beta": 1.0,
         "fiftyTwoWeekChange": null,
         "summary": null,
-        "lastUpdated": "2026-10-08T15:31:47.212736Z"
+        "lastUpdated": "2026-10-08T15:32:57.589085Z"
       },
       "history": [
         {
@@ -11735,7 +11735,7 @@
         {
           "timestamp": 1791466200000,
           "date": "2026-10-08",
-          "price": 753.91
+          "price": 753.93
         }
       ]
     },
@@ -11743,9 +11743,9 @@
       "quote": {
         "symbol": "SPY",
         "name": "State Street SPDR S&P 500 ETF Trust",
-        "price": 774.71,
-        "change": 101.6,
-        "changePercent": 15.09,
+        "price": 774.62,
+        "change": 101.51,
+        "changePercent": 15.08,
         "fiftyTwoWeekHigh": 781.62,
         "fiftyTwoWeekLow": 629.28,
         "dayHigh": 776.555,
@@ -11755,13 +11755,13 @@
         "eps": null,
         "dividendYield": null,
         "beta": 1.0,
-        "volume": 9159308,
+        "volume": 9195208,
         "avgVolume": null,
         "sector": "Diversified ETF",
         "industry": "Index Fund",
         "currency": "USD",
         "type": "etf",
-        "lastUpdated": "2026-10-08T15:31:47.594876Z"
+        "lastUpdated": "2026-10-08T15:32:57.981295Z"
       },
       "fundamentals": {
         "symbol": "SPY",
@@ -11778,7 +11778,7 @@
         "beta": 1.0,
         "fiftyTwoWeekChange": null,
         "summary": null,
-        "lastUpdated": "2026-10-08T15:31:47.594885Z"
+        "lastUpdated": "2026-10-08T15:32:57.981304Z"
       },
       "history": [
         {
@@ -13039,7 +13039,7 @@
         {
           "timestamp": 1791466200000,
           "date": "2026-10-08",
-          "price": 774.71
+          "price": 774.62
         }
       ]
     },
@@ -13047,9 +13047,9 @@
       "quote": {
         "symbol": "VTI",
         "name": "Vanguard Morningstar Total Stock Market ETF",
-        "price": 379.56,
-        "change": 47.75,
-        "changePercent": 14.39,
+        "price": 379.54,
+        "change": 47.73,
+        "changePercent": 14.38,
         "fiftyTwoWeekHigh": 385.12,
         "fiftyTwoWeekLow": 310.4,
         "dayHigh": 380.63,
@@ -13059,13 +13059,13 @@
         "eps": null,
         "dividendYield": null,
         "beta": 1.0,
-        "volume": 999963,
+        "volume": 1006874,
         "avgVolume": null,
         "sector": "Diversified ETF",
         "industry": "Index Fund",
         "currency": "USD",
         "type": "etf",
-        "lastUpdated": "2026-10-08T15:31:47.980796Z"
+        "lastUpdated": "2026-10-08T15:32:58.367244Z"
       },
       "fundamentals": {
         "symbol": "VTI",
@@ -13082,7 +13082,7 @@
         "beta": 1.0,
         "fiftyTwoWeekChange": null,
         "summary": null,
-        "lastUpdated": "2026-10-08T15:31:47.980806Z"
+        "lastUpdated": "2026-10-08T15:32:58.367252Z"
       },
       "history": [
         {
@@ -14343,7 +14343,7 @@
         {
           "timestamp": 1791466200000,
           "date": "2026-10-08",
-          "price": 379.56
+          "price": 379.54
         }
       ]
     }
