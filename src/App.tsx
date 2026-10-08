@@ -45,10 +45,10 @@ export default function App() {
 
   const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState<boolean>(() => {
     try {
-      return localStorage.getItem('investwise_onboarding_done') === 'true';
-    } catch (e) {
-      return false;
-    }
+      const saved = localStorage.getItem('investwise_onboarding_done');
+      if (saved !== null) return saved === 'true';
+    } catch (e) {}
+    return true; // Default to true so dashboard, assets, equities, and ETFs render immediately
   });
 
   const [watchlist, setWatchlist] = useState<string[]>(() => {
