@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, Bookmark, TrendingUp, SlidersHorizontal, Search, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { Compass, Bookmark, TrendingUp, SlidersHorizontal, Search, ArrowUpRight, ShieldCheck, Scale } from 'lucide-react';
 import type { RiskCategory } from '../types/market';
 
 interface HeaderProps {
@@ -60,6 +60,17 @@ export const Header: React.FC<HeaderProps> = ({
                 }`}
               >
                 Discover
+              </button>
+              <button
+                onClick={() => onTabChange('compare')}
+                className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
+                  activeTab === 'compare'
+                    ? 'text-neutral-950 font-semibold bg-neutral-100'
+                    : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
+                }`}
+              >
+                <Scale className="w-3.5 h-3.5 text-neutral-500" />
+                <span>Compare</span>
               </button>
               <button
                 onClick={() => onTabChange('watchlist')}
@@ -144,6 +155,15 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <Compass className="w-4 h-4" />
           <span>Discover</span>
+        </button>
+        <button
+          onClick={() => onTabChange('compare')}
+          className={`flex flex-col items-center gap-1 py-1 px-3 text-xs font-medium cursor-pointer ${
+            activeTab === 'compare' ? 'text-neutral-950 font-bold' : 'text-neutral-500'
+          }`}
+        >
+          <Scale className="w-4 h-4" />
+          <span>Compare</span>
         </button>
         <button
           onClick={() => onTabChange('watchlist')}

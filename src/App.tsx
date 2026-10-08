@@ -63,7 +63,7 @@ export default function App() {
   const [comparedSymbols, setComparedSymbols] = useState<string[]>(['MSFT', 'NVDA', 'GOOGL']);
 
   // Active navigation tab
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'discover' | 'watchlist' | 'portfolio'>('dashboard');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'discover' | 'compare' | 'watchlist' | 'portfolio'>('dashboard');
 
   // Modals & UI controls
   const [isProfilerModalOpen, setIsProfilerModalOpen] = useState(false);
@@ -364,17 +364,39 @@ export default function App() {
               </div>
             )}
 
-            {/* Quick Comparison Section on Dashboard */}
+            {/* Quick Comparison Teaser on Dashboard */}
             {comparedSymbols.length > 0 && analysisData && (
               <div className="pt-6 border-t border-neutral-200">
-                <ComparisonView
-                  selectedSymbols={comparedSymbols}
-                  analyses={analysisData.opportunities}
-                  onRemoveSymbol={handleRemoveCompare}
-                  onAddSymbol={handleAddCompare}
-                  onSelectDetail={(sym) => setSelectedStockDetail(sym)}
-                  riskProfile={riskResult.category}
-                />
+                <div className="bg-white rounded-2xl border border-neutral-200 p-5 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-neutral-900 text-white flex items-center justify-center shadow-xs">
+                      <Scale className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="text-xs uppercase tracking-wider font-bold text-neutral-400">
+                        Side-by-Side Comparison & Advice
+                      </div>
+                      <div className="text-sm font-bold text-neutral-950 flex items-center gap-1.5 mt-0.5">
+                        <span>Comparing:</span>
+                        <div className="flex items-center gap-1 font-mono">
+                          {comparedSymbols.map(sym => (
+                            <span key={sym} className="px-1.5 py-0.5 rounded bg-neutral-100 border border-neutral-200 text-neutral-800 text-xs font-semibold">
+                              {sym}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => setActiveTab('compare')}
+                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900 text-white text-xs font-semibold hover:bg-neutral-800 transition-colors cursor-pointer self-start sm:self-auto shadow-xs"
+                  >
+                    <span>View 3-Stock Comparison & Verdict</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             )}
           </div>
@@ -457,7 +479,19 @@ export default function App() {
           </div>
         )}
 
-        {/* TAB 3: WATCHLIST */}
+        {/* TAB 3: 3-STOCK COMPARISON & RECOMMENDATION VERDICT */}
+        {activeTab === 'compare' && (
+          <ComparisonView
+            selectedSymbols={comparedSymbols}
+            analyses={analysisData?.opportunities || []}
+            onRemoveSymbol={handleRemoveCompare}
+            onAddSymbol={handleAddCompare}
+            onSelectDetail={(sym) => setSelectedStockDetail(sym)}
+            riskProfile={riskResult.category}
+          />
+        )}
+
+        {/* TAB 4: WATCHLIST */}
         {activeTab === 'watchlist' && (
           <WatchlistView
             watchlistSymbols={watchlist}
