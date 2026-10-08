@@ -6,12 +6,14 @@ import type {
   SentimentType,
 } from '../types/market';
 import { analyzeAsset } from '../../server/scoringEngine';
+import rawData from '../data/market_data.json';
 
 // Liquid universe benchmark dataset
 export const BENCHMARK_ASSETS: {
   quote: MarketQuote;
   fundamentals: MarketFundamentals;
-}[] = [
+}[] = (() => {
+  const defaults: { quote: MarketQuote; fundamentals: MarketFundamentals }[] = [
   {
     quote: {
       symbol: 'MSFT',
@@ -474,7 +476,25 @@ export const BENCHMARK_ASSETS: {
       lastUpdated: new Date().toISOString(),
     },
   },
-];
+  ];
+
+  // Merge live assets pulled by Python script if available
+  const liveAssets = (rawData as any)?.assets;
+  if (liveAssets && typeof liveAssets === 'object') {
+    return defaults.map((item) => {
+      const live = liveAssets[item.quote.symbol];
+      if (live && live.quote) {
+        return {
+          quote: { ...item.quote, ...live.quote },
+          fundamentals: { ...item.fundamentals, ...(live.fundamentals || {}) },
+        };
+      }
+      return item;
+    });
+  }
+
+  return defaults;
+})();
 
 /**
  * Generate client-side analysis in case of static hosting or network disconnect

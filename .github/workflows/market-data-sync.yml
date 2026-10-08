@@ -1,0 +1,32 @@
+name: Sync Market Data from Yahoo Finance
+
+on:
+  schedule:
+    # Run once daily at 21:00 UTC (after US market close)
+    - cron: '0 21 * * 1-5'
+  workflow_dispatch: # Allow manual trigger anytime from GitHub Actions tab
+
+jobs:
+  update-market-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Pull Market Data via query1.finance.yahoo.com
+        run: |
+          python scripts/fetch_market_data.py
+
+      - name: Commit and Push Updated Market Data to GitHub
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/market_data.json
+          git diff --staged --quiet || (git commit -m "chore(data): auto-sync market snapshot via query1.finance.yahoo.com" && git push)
