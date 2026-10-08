@@ -80,10 +80,21 @@ export const api = {
     if (symbols && symbols.length > 0) {
       params.append('symbols', symbols.join(','));
     }
-    const res = await fetch(`/api/analyse?${params.toString()}`);
-    if (!res.ok) {
-      throw new Error('Analysis request failed');
+    const url = `/api/analyse?${params.toString()}`;
+
+    // Try up to 3 times to account for server boots or transient network blips
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        const res = await fetch(url);
+        if (res.ok) {
+          return await res.json();
+        }
+      } catch (e) {
+        if (attempt === 3) throw e;
+      }
+      await new Promise(r => setTimeout(r, 600));
     }
-    return await res.json();
+
+    throw new Error('Analysis request failed');
   },
 };

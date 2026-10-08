@@ -380,6 +380,58 @@ const COMMON_SEARCH_INDEX: SearchResultItem[] = [
   { symbol: 'VTI', name: 'Vanguard Total Stock Market ETF', type: 'ETF', exchange: 'NYSE Arca' },
 ];
 
+// Pre-seed caches so API endpoints respond immediately on boot
+for (const [sym, b] of Object.entries(BENCHMARK_DEFAULTS)) {
+  const isEtf = b.type === 'etf' || ['VOO', 'QQQ', 'SPY', 'VTI'].includes(sym);
+  quoteCache.set(sym, {
+    data: {
+      symbol: sym,
+      name: b.name || sym,
+      price: b.price ?? 100,
+      change: b.change ?? 1.0,
+      changePercent: b.changePercent ?? 0.5,
+      fiftyTwoWeekHigh: b.fiftyTwoWeekHigh ?? null,
+      fiftyTwoWeekLow: b.fiftyTwoWeekLow ?? null,
+      dayHigh: b.dayHigh ?? null,
+      dayLow: b.dayLow ?? null,
+      marketCap: b.marketCap ?? null,
+      peRatio: b.peRatio ?? null,
+      eps: b.eps ?? null,
+      dividendYield: b.dividendYield ?? null,
+      beta: b.beta ?? 1.0,
+      volume: b.volume ?? null,
+      avgVolume: b.avgVolume ?? null,
+      sector: b.sector ?? null,
+      industry: b.industry ?? null,
+      currency: 'USD',
+      type: isEtf ? 'etf' : 'stock',
+      lastUpdated: new Date().toISOString(),
+    },
+    timestamp: Date.now() - 30_000,
+  });
+
+  fundamentalsCache.set(sym, {
+    data: {
+      symbol: sym,
+      name: b.name || sym,
+      revenueGrowth: b.revenueGrowth ?? null,
+      profitMargin: b.profitMargin ?? null,
+      returnOnEquity: b.returnOnEquity ?? null,
+      debtToEquity: b.debtToEquity ?? null,
+      freeCashFlow: b.freeCashFlow ?? null,
+      priceToBook: b.priceToBook ?? null,
+      forwardPE: b.forwardPE ?? null,
+      trailingPE: b.trailingPE ?? null,
+      trailingEps: b.trailingEps ?? null,
+      beta: b.beta ?? null,
+      fiftyTwoWeekChange: b.fiftyTwoWeekChange ?? null,
+      summary: b.summary ?? null,
+      lastUpdated: new Date().toISOString(),
+    },
+    timestamp: Date.now() - 30_000,
+  });
+}
+
 /**
  * Fetch live quote using Yahoo Finance provider (yfinance-compatible)
  */
@@ -387,7 +439,7 @@ export async function getMarketQuote(symbolInput: string): Promise<MarketQuote |
   const symbol = symbolInput.trim().toUpperCase();
   if (!symbol) return null;
 
-  // Check cache first
+  // Check cache first (instant response)
   const cached = quoteCache.get(symbol);
   if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
     return cached.data;
@@ -426,7 +478,12 @@ export async function getMarketQuote(symbolInput: string): Promise<MarketQuote |
       return quote;
     }
   } catch (err) {
-    // If live call encounters an issue, fallback to benchmark defaults
+    // If live call encounters an issue, fallback to cached or benchmark default
+  }
+
+  // Return cached if available even if slightly older
+  if (cached) {
+    return cached.data;
   }
 
   // Fallback to verified benchmark default if available

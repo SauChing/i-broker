@@ -97,14 +97,23 @@ export default function App() {
   const fetchAnalysis = async (showRefreshSpinner = false) => {
     if (showRefreshSpinner) setIsRefreshing(true);
     else setIsLoadingAnalysis(true);
-    setFetchError(null);
 
     try {
       const data = await api.getAnalysis(riskResult.category);
       setAnalysisData(data);
+      setFetchError(null);
     } catch (err: any) {
       console.error('Failed to load market analysis:', err);
-      setFetchError('Market data is temporarily unavailable. Retrying with cached benchmarks...');
+      // Auto-retry in background after 2.5 seconds
+      if (!analysisData) {
+        setFetchError('Market data is temporarily updating...');
+      }
+      setTimeout(() => {
+        api.getAnalysis(riskResult.category).then(data => {
+          setAnalysisData(data);
+          setFetchError(null);
+        }).catch(() => {});
+      }, 2500);
     } finally {
       setIsLoadingAnalysis(false);
       setIsRefreshing(false);
